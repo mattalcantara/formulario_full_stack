@@ -27,7 +27,7 @@ def form():
             val = (usuario_form, email_form, senha_form)
             cursor.execute(query, val)
             conn.commit()
-            return render_template("home.html", code=200)
+            return render_template("sucesso.html", code=200)
         except:
             return "Erro ao adicionar"
     else:
@@ -44,9 +44,14 @@ def home():
         print(registros[x])
     return render_template("home.html", registros=registros)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/capa', methods=['POST', 'GET'])
 def capa():
-    return render_template("capa.html")
+    title = "Seja bem vindo a Capa!"
+    return render_template("capa.html", title = title)
+
+@app.route('/sucesso', methods=['POST', 'GET'])
+def sucesso():
+    return render_template("sucesso.html")
 
 if __name__ == "__main__":
     app.run(debug=True, use_debugger=False, use_reloader=False)

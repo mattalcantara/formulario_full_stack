@@ -8,10 +8,13 @@
     <p>Nomes</p>
     {% for item in registros %}
     <tr>
+        <td>ID: {{ item[0] }}</td><br>
         <td>Usuario: {{ item[1] }}</td><br>
         <td>Email: {{ item[2] }}</td><br>
     </tr>
     {% endfor %}
+
+    <a href="http://127.0.0.1:5000/capa">Clique aqui para voltar para a home</a>
 </head>
 <body>
     
