@@ -1,0 +1,18 @@
+<html>
+<body>
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <div class="container" >
+        <br/>
+        <form action="/form" method="POST">
+            <input type="text" placeholder="Usuário" name="usuario">
+            <input type="text" placeholder="E-mail" name="email">
+            <input type="text" placeholder="Senha" name="senha">
+            <input type="submit" value="Cadastrar" class="btn btn-secondary">
+        </form>
+        <br/><br/>
+    </div>
+{% endblock %}
+
+</body>
+</html>
