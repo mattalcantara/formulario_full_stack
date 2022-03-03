@@ -44,6 +44,9 @@ def home():
         print(registros[x])
     return render_template("home.html", registros=registros)
 
+@app.route('/', methods=['POST', 'GET'])
+def capa():
+    return render_template("capa.html")
 
 if __name__ == "__main__":
     app.run(debug=True, use_debugger=False, use_reloader=False)
