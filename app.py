@@ -1,6 +1,9 @@
 import os
 from flask import Flask, render_template, json, request, jsonify
 from flaskext.mysql import MySQL
+#from flask.ext.mysql import MySQL
+#from flask_mysql import MySQL
+#from flask_mysqldb import MySQL
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -8,7 +11,7 @@ app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = '0221'
 app.config['MYSQL_DATABASE_DB'] = 'cadastro'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost' #172.17.0.1
+app.config['MYSQL_DATABASE_HOST'] = '172.17.0.2' #172.17.0.1
 app.config['MYSQL_DATABASE_PORT'] = 3306
 
 mysql.init_app(app)
