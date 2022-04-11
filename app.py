@@ -47,7 +47,7 @@ def home():
         print(registros[x])
     return render_template("home.html", registros=registros)
 
-@app.route('/capa', methods=['POST', 'GET'])
+@app.route('/', methods=['POST', 'GET'])
 def capa():
     title = "Seja bem vindo a Capa!"
     return render_template("capa.html", title = title)
@@ -58,4 +58,4 @@ def sucesso():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, use_debugger=False, use_reloader=False)
+    app.run(host='0.0.0.0', port=port)
