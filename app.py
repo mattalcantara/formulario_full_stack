@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, json, request, jsonify
 from flaskext.mysql import MySQL
-from tratamentos import tratar
 #from flask.ext.mysql import MySQL
 #from flask_mysql import MySQL
 #from flask_mysqldb import MySQL
@@ -21,9 +20,9 @@ mysql.init_app(app)
 def form():
     title = 'Formulário de Cadastro'
     if request.method == "POST":
-        nome_form = tratar(request.form['nome'])
+        nome_form = request.form['nome']
         email_form = request.form['email']
-        endereco_form = tratar(request.form['endereco'])
+        endereco_form = request.form['endereco']
         try:
             conn = mysql.connect()
             cursor = conn.cursor()

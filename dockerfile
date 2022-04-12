@@ -1,4 +1,5 @@
 FROM python:3.7-slim
+RUN pip install unicode
 RUN pip install flask
 RUN pip install flask-mysql
 RUN mkdir templates
