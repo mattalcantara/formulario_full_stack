@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, json, request, jsonify
 from flaskext.mysql import MySQL
+from tratamentos import tratar
 #from flask.ext.mysql import MySQL
 #from flask_mysql import MySQL
 #from flask_mysqldb import MySQL
@@ -20,14 +21,14 @@ mysql.init_app(app)
 def form():
     title = 'Formulário de Cadastro'
     if request.method == "POST":
-        usuario_form = request.form['usuario']
+        nome_form = tratar(request.form['nome'])
         email_form = request.form['email']
-        senha_form = request.form['senha']
+        endereco_form = tratar(request.form['endereco'])
         try:
             conn = mysql.connect()
             cursor = conn.cursor()
-            query = ("INSERT INTO cadastros (usuario, email, senha)" "VALUES (%s,%s,%s)")
-            val = (usuario_form, email_form, senha_form)
+            query = ("INSERT INTO cadastros (nome, email, endereco)" "VALUES (%s,%s,%s)")
+            val = (nome_form, email_form, endereco_form)
             cursor.execute(query, val)
             conn.commit()
             return render_template("sucesso.html", code=200)
@@ -42,7 +43,7 @@ def home():
     cursor = conn.cursor()
     print(cursor.execute("SELECT * FROM cadastros"))
     registros = cursor.fetchall()
-    print(registros[0]);
+    print(registros[0])
     for x in range(len(registros)):
         print(registros[x])
     return render_template("home.html", registros=registros)
